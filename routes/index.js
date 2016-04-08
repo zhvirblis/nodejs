@@ -35,7 +35,7 @@ exports.archive = function(req, res){
     });*/
     request(link+urlParsed.pathname, function (error, response, body) {
       if (!error) {
-          var $ = cheerio.load(body);
+          var $ = cheerio.load(body,{decodeEntities: false});
           var posts="";
           $("a").each(function(i, elem){
               var hrefs=$(this).attr("href").split('/');
