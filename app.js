@@ -7,22 +7,7 @@ var express = require('express')
   , routes = require('./routes');
 
 var app = module.exports = express.createServer();
-var mysql      = require('mysql');
-var connection = mysql.createConnection({
-  host     : 'localhost',
-  user     : 'root',
-  password : '84m2k3o4',
-  database : 'nodejs'
-});
 
-connection.connect(function(err) {
-  if (err) {
-    console.error('error connecting: ' + err.stack);
-    return;
-  }
- 
-  console.log('connected as id ' + connection.threadId);
-});
 
 app.configure(function(){
   app.set('views', __dirname + '/views');
@@ -38,7 +23,9 @@ app.configure(function(){
 var sitename = "GRAB13.ru";
 var footer="&copy GRAB13";
 
+
 app.use(routes.archive);
+
 app.use(function(req,res){
   res.status(404).end("<h1>Page not found</h1>");
 });
