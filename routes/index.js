@@ -67,8 +67,10 @@ exports.archive = function(req, res){
           });
           var title = $("title").html();
           var pagedata = { title:title, sitename:sitename, footer:footer, content:posts};
-          if(createRequest.noneSQL) res.render('index', pagedata);
 
+          if(createRequest.noneSQL) {
+            res.render('index', pagedata);
+          }
           connection.query('DELETE FROM pages WHERE link = "'+urlParsed.pathname+'"' ,function(err, result) {
           if (err) console.error("IN1="+err.stack);
           });

@@ -8,8 +8,18 @@ xmlHttp.onreadystatechange=function()
   {
   if (xmlHttp.readyState==4 && xmlHttp.status==200)
     {
-      console.log("WORK");
-       console.log(xmlHttp.responseText);
+      var page = document.createElement('html');
+      page.innerHTML=xmlHttp.responseText;
+      var content=document.getElementById("content");
+      var cont=page.getElementsByTagName("div");
+      for(var i=0;i<cont.length;i++){
+      	if(cont[i].id="content"){
+      		content=cont[i];
+      		break;
+      	}
+      }
+      var load=document.getElementById("load");
+      load.parentNode.removeChild(load);
     }
   }
   console.log(window.location.pathname);
