@@ -74,10 +74,10 @@ exports.archive = function(req, res){
           connection.query('DELETE FROM pages WHERE link = "'+urlParsed.pathname+'"' ,function(err, result) {
           if (err) console.error("IN1="+err.stack);
           });
-
+          if(title!=0){
           connection.query('INSERT INTO pages SET ?', {link: urlParsed.pathname, content:posts, title:title}, function(err, result) {
           if (err) console.error("IN2="+err.stack);
-          });
+          });}
 
         }
         else {
