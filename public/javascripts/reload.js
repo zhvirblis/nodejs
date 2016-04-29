@@ -13,16 +13,15 @@ xmlHttp.onreadystatechange=function()
       var content=document.getElementById("content");
       var cont=page.getElementsByTagName("div");
       for(var i=0;i<cont.length;i++){
-      	if(cont[i].id="content"){
-      		content=cont[i];
-      		break;
+      	if(cont[i].id=="content"){
+      		content.innerHTML=cont[i].innerHTML;
+          break;
       	}
       }
       var load=document.getElementById("load");
       load.parentNode.removeChild(load);
     }
   }
-  console.log(window.location.pathname);
 xmlHttp.open("GET", window.location.pathname+"?js=true", true);
 xmlHttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
 xmlHttp.send();
